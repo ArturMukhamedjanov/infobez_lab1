@@ -1,4 +1,3 @@
-//RegisterRequest.java
 package security.auth;
 
 

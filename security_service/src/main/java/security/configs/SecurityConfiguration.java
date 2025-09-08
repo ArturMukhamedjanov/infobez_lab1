@@ -50,11 +50,10 @@ public class SecurityConfiguration {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOriginPatterns(List.of("*")); // Используйте setAllowedOrigins(List.of("*")) если не требуется allowCredentials
+        configuration.setAllowedOriginPatterns(List.of("*"));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        // Разрешенные заголовки
         configuration.setAllowedHeaders(List.of("*"));
-        configuration.setAllowCredentials(true); // Установите true, если вам нужно разрешить учетные данные и используйте setAllowedOriginPatterns
+        configuration.setAllowCredentials(true);
         configuration.setExposedHeaders(List.of("ErrMessage"));
         configuration.setMaxAge(3600L);
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

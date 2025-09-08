@@ -1,6 +1,5 @@
 package security.auth.services;
 
-import security.models.auth.Role;
 import security.models.auth.User;
 import security.models.auth.User.UserBuilder;
 import security.repositories.UserRepo;
@@ -46,7 +45,6 @@ public class AuthenticationService {
         String jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()
                 .token(jwtToken)
-                .role(user.getRole())
                 .build();
     }
 

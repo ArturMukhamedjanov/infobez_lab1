@@ -1,7 +1,7 @@
-package delivery.services;
+package security.services;
 
-import delivery.models.auth.User;
-import delivery.repositories.UserRepo;
+import security.models.auth.User;
+import security.repositories.UserRepo;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
