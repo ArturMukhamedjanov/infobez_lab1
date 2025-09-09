@@ -13,7 +13,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Run OWASP Dependency Check
-        run: mvn org.owasp:dependency-check-maven:8.3.1:check
+        run: mvn org.owasp:dependency-check-maven:8.3.1:check -Dnoupdate=true
 
       - name: Run SpotBugs
         run: mvn com.github.spotbugs:spotbugs-maven-plugin:4.7.3.0:check
