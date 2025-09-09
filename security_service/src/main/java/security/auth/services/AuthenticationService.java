@@ -1,7 +1,6 @@
 package security.auth.services;
 
 import security.models.auth.User;
-import security.models.auth.User.UserBuilder;
 import security.repositories.UserRepo;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -24,13 +23,16 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
-    public User registerUser(RegisterRequest request){
-        UserBuilder userBuilder = User.builder()
+    public AuthenticationResponse registerUser(RegisterRequest request){
+        var userBuilder = User.builder()
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()));
-        User user = userBuilder.build();
+        var user = userBuilder.build();
         user = userRepo.save(user);
-        return user;
+        var jwtToken = jwtService.generateToken(user);
+        return AuthenticationResponse.builder()
+                .token(jwtToken)
+                .build();
     }
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {

@@ -5,6 +5,7 @@ import security.repositories.UserRepo;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -22,5 +23,9 @@ public class UserService {
 
     public Optional<User> getUserById(Long id){
         return userRepository.findById(id);
+    }
+
+    public List<String> getAllUsernames(){
+        return userRepository.findAll().stream().map(User::getUsername).toList();
     }
 }
